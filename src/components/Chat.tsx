@@ -90,7 +90,6 @@ const Message = memo(
   ({
     msg,
     selectedUser,
-    index,
     githubAvatar,
   }: {
     msg: ChatMessage;
@@ -224,7 +223,7 @@ export default function PersonaChatUI({
       if (!res.body) throw new Error("No response body");
       const reader = res.body.getReader();
       const decoder = new TextDecoder();
-      let botReply: ChatMessage = { sender: "bot", text: "" };
+      const botReply: ChatMessage = { sender: "bot", text: "" };
 
       while (true) {
         const { done, value } = await reader.read();
